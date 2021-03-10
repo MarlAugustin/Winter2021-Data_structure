@@ -35,21 +35,28 @@ public class introductionTableaux {
 					choix = clavier.nextInt();
 					switch (choix) {
 					case 1:
-						System.out.print("Indiquez le nombre de plages: ");
-						choix = clavier.nextInt();
-						clavier.nextLine();
 						// TODO: Initialiser le tableau donneesJour
 						// TODO: Initialiser le tableau plages
 						// TODO: Appeler la fonction initialisePlages
+						System.out.print("Indiquez le nombre de plages: ");
+						choix = clavier.nextInt();
+						clavier.nextLine();
+						plages = new String[choix];
+					    donneesJour = new int[choix];
+						initialisePlages(clavier, plages);
+					
 						break;
 					case 2:
 						// TODO: Appeler la fonction entrerDonneesJour
+						entrerDonneesJour(clavier, donneesJour, plages);
 						break;
 					case 3:
 						// TODO: Appeler la fonction afficherDonneesJour
+						afficherDonneesJour( donneesJour, plages);
 						break;
 					case 4:
 						// TODO: Appeler calculeMoyenne et recuperer la moyenne
+						moyenne=calculeMoyenne(donneesJour);
 						if (!Float.isNaN(moyenne)) {
 							System.out.println("La moyenne de la journee est : " + moyenne);
 						}
@@ -91,6 +98,10 @@ public class introductionTableaux {
 			public static void initialisePlages(Scanner cl, String[] plages) {
 				// TODO: Demander le nom de chaque plage a l'usager et les sauvegarder dans le tableau plages
 				// Faire les lectures des noms avec cl.nextLine()
+				for (int i=0;i<plages.length;i++) {
+					System.out.println("Indiquez la plage # "+(i+1)+" :");
+					plages [i]=cl.nextLine();
+				}
 			}
 
 			public static void entrerDonneesJour(Scanner cl, int[] donneesVec, String[] plages) {
@@ -98,20 +109,34 @@ public class introductionTableaux {
 				// TODO: Demander et lire les donnees pour chaque plage dans donneesVec
 				// Si les tailles des tableaux plages et donneesVec sont identiques, on identifie la plage
 				// par son nom lorsque l'on demande une donnee, sinon on numerote les plages a partir de 1
+				if(donneesVec!=null && plages !=null ) {
+				for (int i=0;i<donneesVec.length;i++) {
+				System.out.println("Inscrivez la donnee pour la plage " + plages[i] +" :");
+				donneesVec[i]=cl.nextInt() ;
+				}
 			}
-
+			}
 			public static void afficherDonneesJour(int[] donneesVec, String[] plages) {
 				// TODO: S'assurer que les deux tableaux ne sont pas null
 				// TODO: Afficher la donnee associee a chaque plage
 				// Si les tailles des tableaux plages et donneesVec sont identiques, on identifie la plage
 				// par son nom lorsque l'on affiche une donnee, sinon on numerote les plages a partir de 1
+				if(donneesVec!=null && plages !=null ) {
+					for (int i=0;i<donneesVec.length;i++) {
+					System.out.println("Donnee pour la plage " + plages[i] +" : " + donneesVec[i]);
+					}
+				}
+				
 			}
 
 			// TODO: Faire des tests unitaires pour cette fonction
 			public static float calculeMoyenne(int[] donneesVec) {
 				float moyenne = Float.NaN;
+				for (int i=0;i<donneesVec.length;i++) {
+					moyenne+=donneesVec[i];
+				}
 				// TODO: Calculer la moyenne si donneesVec n'est pas null
-				return moyenne;
+				return (moyenne/donneesVec.length);
 			}
 
 			public static int trouvePosMin(int[] donneesVec) {
