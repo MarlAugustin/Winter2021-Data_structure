@@ -132,11 +132,14 @@ public class introductionTableaux {
 			// TODO: Faire des tests unitaires pour cette fonction
 			public static float calculeMoyenne(int[] donneesVec) {
 				float moyenne = Float.NaN;
+				int somme=0;
 				for (int i=0;i<donneesVec.length;i++) {
-					moyenne+=donneesVec[i];
+					somme+=donneesVec[i];
 				}
+				moyenne=(somme/donneesVec.length);
+				
 				// TODO: Calculer la moyenne si donneesVec n'est pas null
-				return (moyenne/donneesVec.length);
+				return moyenne;
 			}
 
 			public static int trouvePosMin(int[] donneesVec) {
