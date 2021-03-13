@@ -64,13 +64,17 @@ public class introductionTableaux {
 					case 5:
 						// TODO: s'assurer que donneesJour n'est pas null
 						// Ne pas oublier d'implementer trouvePosMin et trouvePosMax
+						if(donneesJour!=null && plages !=null ) {
 							System.out.println("La valeur minimale de la journee est : " 
 									+ donneesJour[trouvePosMin(donneesJour)]);
 							System.out.println("La valeur maximale de la journee est : " 
 									+ donneesJour[trouvePosMax(donneesJour)]);
+						}
+							
 						break;
 					case 6:
 						// TODO: Appeler initialiserMatrice afin d'initialiser la matrice donneesJours
+						initialiserMatrice(clavier);
 						break;
 					case 7:
 						// TODO: Appeler entrerDonneesJours
@@ -146,6 +150,12 @@ public class introductionTableaux {
 				int posMin = 0;
 				// TODO: Identifier l'indice de la valeur minimale
 				// On considere que le tableau donneesVec n'est jamais null
+				
+				for (int i = 1; i < donneesVec.length; ++i) { 
+					if (donneesVec[i] < donneesVec[ posMin ])
+						posMin = i; 
+				}
+				
 				return posMin;
 			}
 
@@ -154,6 +164,10 @@ public class introductionTableaux {
 				int posMax = 0;
 				// TODO: Identifier l'indice de la valeur maximale
 				// On considere que le tableau donneesVec n'est jamais null
+				for (int i = 1; i < donneesVec.length; ++i) { 
+					if (donneesVec[i] > donneesVec[ posMax ])
+						posMax = i; 
+				}
 				return posMax;
 			}
 
@@ -164,9 +178,12 @@ public class introductionTableaux {
 				System.out.print("Indiquez le nombre de jours : ");
 				valeur = cl.nextInt();
 				// TODO: initialise matrice avec le nombre de ligne indique par l'usager
+				int [][] matrice = new int [valeur] [valeur];
+				
 				for (int i = 0; i < matrice.length; ++i) {  // Pour chaque ligne
 					System.out.print("Entrez le nombre de plages pour le jour " + (i + 1) + " : ");
 					valeur = cl.nextInt();
+					
 					// TODO: Initialise une ligne de matrice avec le nombre de colonnes specifiees
 				}
 				return matrice;
