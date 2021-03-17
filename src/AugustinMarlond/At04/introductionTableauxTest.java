@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class introductionTableauxTest {
 	int[] donneesJour = {43,23,45,12};
-	int[][] matrice={{43,23,45,12},
+	int[][] matrice={{43,23,45,12,43},
 					 {44,33,22,44,55},
 	 				 {500,-1000,200,400,55}
 						};
@@ -30,9 +30,20 @@ public class introductionTableauxTest {
 			
 	}
 	@Test
+	public void matriceReguliere() {
+		assertEquals(true, introductionTableaux.matriceReguliere(matrice));
+		//ça reconnait l'erreur
+		int[][] matrice={{43,23,45,12},
+				 {44,33,22,44,55,66},
+				 {500,-1000,200,400,55}
+					};
+		assertEquals(false, introductionTableaux.matriceReguliere(matrice));
+
+		
+	}@Test
 	public void calculerMoyenneJour() {
-		assertEquals(40, introductionTableaux.calculerMoyenneJour(matrice, 2),0.01);
-		assertEquals(31, introductionTableaux.calculerMoyenneJour(matrice, 3),0.01);
+		assertEquals(31, introductionTableaux.calculerMoyenneJour(matrice, 2),0.01);
+		assertEquals(30.75, introductionTableaux.calculerMoyenneJour(matrice, 1),0.01);
 
 	}
 
