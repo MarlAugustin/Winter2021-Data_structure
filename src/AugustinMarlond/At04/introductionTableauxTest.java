@@ -8,11 +8,32 @@ import org.junit.Test;
 
 public class introductionTableauxTest {
 	int[] donneesJour = {43,23,45,12};
+	int[][] matrice={{43,23,45,12},
+					 {44,33,22,44,55},
+	 				 {500,-1000,200,400,55}
+						};
+	
+	
 	@Test
 	public void calculeMoyenne() {
-	assertEquals(123, introductionTableaux.calculeMoyenne(donneesJour));
-	
-		
+	assertEquals(30.75, introductionTableaux.calculeMoyenne(donneesJour),0.01);
+	int[] donneesJour = {54,-100,49,31};
+	assertEquals(8.5, introductionTableaux.calculeMoyenne(donneesJour),0.01);
+	//ça reconnait l'erreur
+			
+	}@Test
+	public void trouvePosMax() {
+	assertEquals(2, introductionTableaux.trouvePosMax(donneesJour),0.01);
+	int[] donneesJour = {54,-100,49,31};
+	assertEquals(0, introductionTableaux.trouvePosMax(donneesJour),0.01);
+	//ça reconnait l'erreur
+			
+	}
+	@Test
+	public void calculerMoyenneJour() {
+		assertEquals(40, introductionTableaux.calculerMoyenneJour(matrice, 2),0.01);
+		assertEquals(31, introductionTableaux.calculerMoyenneJour(matrice, 3),0.01);
+
 	}
 
 }

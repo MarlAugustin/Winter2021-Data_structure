@@ -127,8 +127,13 @@ public class introductionTableaux {
 		// partir de 1
 		if (donneesVec != null && plages != null) {
 			for (int i = 0; i < donneesVec.length; i++) {
+				if(donneesVec.length==plages.length) {
 				System.out.println("Inscrivez la donnee pour la plage " + plages[i] + " :");
 				donneesVec[i] = cl.nextInt();
+				}else {
+					System.out.println("Inscrivez la donnee pour la plage " + (i+1) + " :");
+					donneesVec[i] = cl.nextInt();
+				}
 			}
 		}
 	}
@@ -142,7 +147,13 @@ public class introductionTableaux {
 		// partir de 1
 		if (donneesVec != null && plages != null) {
 			for (int i = 0; i < donneesVec.length; i++) {
+				if(donneesVec.length==plages.length) {
 				System.out.println("Donnee pour la plage " + plages[i] + " : " + donneesVec[i]);
+				}else {
+					System.out.println("Donnee pour la plage " + (i+1) + " : " + donneesVec[i]);
+
+				}
+				
 			}
 		}
 
@@ -180,9 +191,11 @@ public class introductionTableaux {
 		int posMax = 0;
 		// TODO: Identifier l'indice de la valeur maximale
 		// On considere que le tableau donneesVec n'est jamais null
+		if (donneesVec != null ) {
 		for (int i = 1; i < donneesVec.length; ++i) {
 			if (donneesVec[i] > donneesVec[posMax])
 				posMax = i;
+		}
 		}
 		return posMax;
 	}
@@ -282,19 +295,13 @@ public class introductionTableaux {
 	// TODO: Faire des tests unitaires pour cette fonction
 	public static float calculerMoyenneJour(int[][] matrice, int ligne) {
 		float moyenne = Float.NaN;
-		int somme;
 		// TODO: Si la matrice n'est pas null et que la ligne demandee existe
 		// calculez la moyenne de la ligne. Vous pouvez utiliser calculeMoyenne
 		if (matrice != null && ligne<=matrice.length ) {
-			for (int i = ligne-1 ; i < matrice.length; i++) {
-				somme=0;
-				for (int j = 0; j < matrice[i].length; ++j) {
-				somme+=matrice[i][j];		
-				//moyenne=calculeMoyenne(matrice[j]);
+			for (int i = ligne-1 ; i < matrice.length; i++) {		
+				moyenne=calculeMoyenne(matrice[i]);
 				}
-				
-				moyenne=somme/matrice[i].length;
-			}
+			
 	}
 		return moyenne;
 	}
