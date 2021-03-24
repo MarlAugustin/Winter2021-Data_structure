@@ -42,8 +42,14 @@ public class introductionTableauxTest {
 		
 	}@Test
 	public void calculerMoyenneJour() {
+		int[][] matrice={{43,23,45,12,43},
+				 {44,33,22,44,55},
+				 {500,-1000,200,400,55}
+					};
+		int[][] matrice1={{125,215,300,400},
+					};
 		assertEquals(31, introductionTableaux.calculerMoyenneJour(matrice, 2),0.01);
-		assertEquals(30.75, introductionTableaux.calculerMoyenneJour(matrice, 1),0.01);
+		assertEquals(30.75, introductionTableaux.calculerMoyenneJour(matrice1, 1),0.01);
 
 	}
 
