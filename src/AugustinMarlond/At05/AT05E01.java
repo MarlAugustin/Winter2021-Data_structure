@@ -104,13 +104,16 @@ public class AT05E01 {
 		if (nbElem<vec.length) {
 			
 			if (ordonne) {
-		int posTemp=nbElem;
-				while(posTemp > 0 && nbElem<vec[posTemp-1]) {
-					vec[posTemp]=vec[posTemp-1];
-					posTemp--;
+		int posTemporaire=nbElem;
+				while(posTemporaire > 0 && elem<vec[posTemporaire-1]) {
+					vec[posTemporaire]=vec[posTemporaire-1];
+					posTemporaire--;
 				}
-				vec[posTemp]= elem;
+				vec[posTemporaire]= elem;
 				nbElem++;
+		}else {
+			vec[nbElem]= elem;
+			nbElem++;
 		}
 		}
 		return nbElem;
