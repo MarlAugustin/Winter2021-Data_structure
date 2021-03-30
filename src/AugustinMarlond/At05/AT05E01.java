@@ -43,12 +43,7 @@ public class AT05E01 {
 			while (posVecB < nbElemB) {
 				vecF[posVecF++] = vecB[posVecB++];
 			}
-			/**
-			 * nbElemF=posVecF;
-			 * while  (posVecF < vecF.length){
-			 * vecF[posVecF++]=-1;
-			 * }
-			*/
+			
 			while (posVecF < vecF.length) {
 				vecF[posVecF++] = nbElemF;
 			}

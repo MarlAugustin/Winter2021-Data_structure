@@ -9,6 +9,22 @@ import AugustinMarlond.At04.introductionTableaux;
 public class AT06E01ABaseTest {
 
 	@Test
+	public void viderGrille() {
+		char[][] grille = { {'R','B','0','0','R','0','0'},
+				{'R','B','0','0','R','0','0'},
+				{'R','B','0','0','R','0','0'},
+				{'R','B','0','0','R','0','0'},
+				{'R','B','0','0','R','0','0'},
+				{'R','B','0','0','R','0','0'}};
+		char[][] grilleTest = { {'0','0','0','0','0','0','0'},
+				{'0','0','0','0','0','0','0'},
+				{'0','0','0','0','0','0','0'},
+				{'0','0','0','0','0','0','0'},
+				{'0','0','0','0','0','0','0'},
+				{'0','0','0','0','0','0','0'}};
+		assertArrayEquals(grilleTest,AT06E01ABase.viderGrille(grille));
+	}
+	@Test
 	public void ajouteJeton() {
 		char[][] grille = { {'R','B','0','0','R','0','0'},
 				{'R','B','0','0','R','0','0'},

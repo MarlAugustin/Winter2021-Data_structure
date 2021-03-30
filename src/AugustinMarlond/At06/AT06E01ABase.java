@@ -108,6 +108,11 @@ package AugustinMarlond.At06;
 			public static void viderGrille(char[][] grille) {
 				// TODO: Remettre toutes les cases de la grille a 0
 				// TODO: Tests unitaires
+				for(int i=0; i<grille.length;i++) {
+				for (int j = 0; j < grille[i].length; j++) {
+						grille[i][j] = '0';
+				}
+				}
 			}
 
 			/**
