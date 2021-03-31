@@ -36,20 +36,20 @@ public class AT06E01ABaseTest {
 	public void verifierColonnes() {
 		char[][] grille = { { 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
 				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
-				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' } };
-	assertTrue(grille[3][2]=='0');
-	assertTrue(grille[5][0]=='R');
-	assertFalse(grille[5][0]=='0');
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', 'R', 'R', 'R', 'R' } };
+		char[][] grilleTest = { { 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0 }};
+		assertTrue(AT06E01ABase.verifierColonnes(grille));
+		assertFalse(AT06E01ABase.verifierColonnes(grilleTest));
 	}
 
 	@Test
 	public void verifierLignes() {
 		char[][] grille = { { 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
 				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
-				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' } };
-		assertTrue(grille[3][0]=='R');
-		assertFalse(grille[5][2]=='B');
-		assertTrue(grille[4][5]==0);
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', 'R', 'R', 'R', 'R' } };
+		char[][] grilleTest = { { 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0 }};
+		assertTrue(AT06E01ABase.verifierLignes(grille));
+		assertFalse(AT06E01ABase.verifierLignes(grilleTest));
 		
 	}
 
@@ -57,8 +57,10 @@ public class AT06E01ABaseTest {
 	public void verifierDiagonales() {
 		char[][] grille = { { 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
 				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
-				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' } };
-		AT06E01ABase.verifierDiagonales(grille);
-		assertTrue(AT06E01ABase.verifierDiagonales(grille));
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', 'R', 'R', 'R', 'R' } };
+		char[][] grilleTest = { { 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0 }};
+		assertFalse(AT06E01ABase.verifierDiagonales(grille));
+		assertFalse(AT06E01ABase.verifierDiagonales(grilleTest));
+		
 	}
 }
