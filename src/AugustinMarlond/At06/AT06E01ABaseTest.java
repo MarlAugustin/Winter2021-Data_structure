@@ -25,7 +25,8 @@ public class AT06E01ABaseTest {
 		char[][] grille = { { 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
 				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
 				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' } };
-		assertEquals(true, AT06E01ABase.ajouteJeton(grille, 2, true));
+		//boolean reponse=AT06E01ABase.ajouteJeton(grille, 2, true);
+		//assertEquals();
 		//assertEquals(false, AT06E01ABase.ajouteJeton(grille, 4, true));
 		//assertEquals(false, AT06E01ABase.ajouteJeton(grille, 1, true));
 
@@ -57,6 +58,7 @@ public class AT06E01ABaseTest {
 		char[][] grille = { { 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
 				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
 				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' } };
-		assertTrue(grille[3][0]=='R');
+		AT06E01ABase.verifierDiagonales(grille);
+		assertTrue(AT06E01ABase.verifierDiagonales(grille));
 	}
 }
