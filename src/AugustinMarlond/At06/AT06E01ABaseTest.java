@@ -10,37 +10,53 @@ public class AT06E01ABaseTest {
 
 	@Test
 	public void viderGrille() {
-		char[][] grille = { {'R','B','0','0','R','0','0'},
-				{'R','B','0','0','R','0','0'},
-				{'R','B','0','0','R','0','0'},
-				{'R','B','0','0','R','0','0'},
-				{'R','B','0','0','R','0','0'},
-				{'R','B','0','0','R','0','0'}};
-		char[][] grilleTest = { {'0','0','0','0','0','0','0'},
-				{'0','0','0','0','0','0','0'},
-				{'0','0','0','0','0','0','0'},
-				{'0','0','0','0','0','0','0'},
-				{'0','0','0','0','0','0','0'},
-				{'0','0','0','0','0','0','0'}};
-		assertArrayEquals(grilleTest,AT06E01ABase.viderGrille(grille));
-	}
-	@Test
-	public void ajouteJeton() {
-		char[][] grille = { {'R','B','0','0','R','0','0'},
-				{'R','B','0','0','R','0','0'},
-				{'R','B','0','0','R','0','0'},
-				{'R','B','0','0','R','0','0'},
-				{'R','B','0','0','R','0','0'},
-				{'R','B','0','0','R','0','0'}};
-		assertEquals(true,  AT06E01ABase.ajouteJeton(grille,3,true));
-		assertEquals(false,  AT06E01ABase.ajouteJeton(grille,4,true));
-		assertEquals(false,  AT06E01ABase.ajouteJeton(grille,1,true));
-		for(int i=0;i<grille.length;i++) {
-			for(int j=0;j<grille[i].length;j++) {
-	System.out.print(grille [i][j]  +"       "	);
-				
-			}System.out.println(" ");
+		char[][] grille = { { 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' } };
+		char[][] grilleTest = { { 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0 },{ 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0 }};
+		AT06E01ABase.viderGrille(grille);
+		assertArrayEquals(grille,grilleTest);
 	}
 
-}
+	@Test
+	public void ajouteJeton() {
+		char[][] grille = { { 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' } };
+		assertEquals(true, AT06E01ABase.ajouteJeton(grille, 2, true));
+		//assertEquals(false, AT06E01ABase.ajouteJeton(grille, 4, true));
+		//assertEquals(false, AT06E01ABase.ajouteJeton(grille, 1, true));
+
+	}
+
+	@Test
+	public void verifierColonnes() {
+		char[][] grille = { { 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' } };
+	assertTrue(grille[3][2]=='0');
+	assertTrue(grille[5][0]=='R');
+	assertFalse(grille[5][0]=='0');
+	}
+
+	@Test
+	public void verifierLignes() {
+		char[][] grille = { { 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' } };
+		assertTrue(grille[3][0]=='R');
+		assertFalse(grille[5][2]=='B');
+		assertTrue(grille[4][5]==0);
+		
+	}
+
+	@Test
+	public void verifierDiagonales() {
+		char[][] grille = { { 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' },
+				{ 'R', 'B', '0', '0', 'R', '0', '0' }, { 'R', 'B', '0', '0', 'R', '0', '0' } };
+		assertTrue(grille[3][0]=='R');
+	}
 }
