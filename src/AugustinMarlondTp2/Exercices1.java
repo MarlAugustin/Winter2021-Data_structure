@@ -210,10 +210,28 @@ public class Exercices1 {
 	 * @return Position de la valeur dans le vecteur ou -1 si non trouvee
 	 */
 	public static int rechercheBin(int[] vec, int valeur) {
-		int posGa = -1;
-		int posDr = -1;
-		int posMi = -1;
+		int posGa = 0;
+		int posDr = vec.length - 1;
+		int posMi = (posGa + posDr)/2;
 		// TODO: Implanter la recherche binaire
+		
+		while (posGa <= posDr && valeur!=vec[posMi]) {
+			if(valeur < vec[posMi]) {
+				posDr=posMi - 1; 
+			}else {
+				posGa=posMi + 1;
+			}
+			posMi=(posGa + posDr)/2;
+			System.out.println("Ga: "+ posGa+ " - " +" Mi : " +posMi + " - " +" Dr: " +posDr);
+		}if(posGa<=posDr) {
+			/*Je n'effectue rien car j'ai crée le if else juste pour
+			pouvoir donné la valeur -1 à posMi, si la valeur est
+			introuvable
+			*/
+		}else {
+			posMi=-1;
+		}
+		
 		return posMi;
 	}
 }

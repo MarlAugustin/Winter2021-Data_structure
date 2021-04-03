@@ -161,11 +161,12 @@ public class AT06E01ABase {
 		int compteJetonB = 0;
 		// TODO: Verifier si 4 jetons d'une meme couleur se retrouvent sur une ligne
 		// TODO: Tests unitaires
-		for (int j = 0; j < grille[0].length; j++) {
+		for (int j = 0; j < grille[0].length - 3; j++) {
 			compteJetonR = 0;
 			compteJetonB = 0;
-			for (int i = 0; i < grille.length; i++) {
-				if (grille[i][j] == 'R') {
+			for (int i = 0; i < grille.length ; i++) {
+			/**	Ma version
+			 * if (grille[i][j] == 'R') {
 					compteJetonR++;
 				} else {
 					compteJetonR = 0;
@@ -180,6 +181,13 @@ public class AT06E01ABase {
 				}
 				if (compteJetonB == 4) {
 					trouve = true;
+				}*/
+				//version du prof de Zein
+				if(grille[i][j]==grille[i][j+1] &&grille[i][j+1]==grille[i][j+2] && grille[i][j+2]==grille[i][j+3]&& grille[i][j]=='R') {
+					trouve=true;
+				}
+				if(grille[i][j]==grille[i][j+1] &&grille[i][j+1]==grille[i][j+2] && grille[i][j+2]==grille[i][j+3] && grille[i][j]=='B') {
+					trouve=true;
 				}
 			}
 		}
@@ -198,11 +206,11 @@ public class AT06E01ABase {
 		int compteJetonB = 0;
 		// TODO: Verifier si 4 jetons d'une meme couleur se retrouvent dans une colonne
 		// TODO: Tests unitaires
-		for (int i = 0; i < grille.length; i++) {
+		for (int i = 0; i < grille.length - 3; i++) {
 			compteJetonR = 0;
 			compteJetonB = 0;
 			for (int j = 0; j < grille[i].length; j++) {
-				if (grille[i][j] == 'R') {
+				/**if (grille[i][j] == 'R') {
 					compteJetonR++;
 				} else {
 					compteJetonR = 0;
@@ -217,6 +225,13 @@ public class AT06E01ABase {
 				}
 				if (compteJetonB == 4) {
 					trouve = true;
+				}*/
+				//version du prof de Zein
+				if(grille[i][j]==grille[i+1][j] &&grille[i+1][j]==grille[i+2][j] && grille[i+2][j]==grille[i+3][j]&& grille[i][j]=='R') {
+					trouve=true;
+				}
+				if(grille[i][j]==grille[i+1][j] &&grille[i+1][j]==grille[i+2][j] && grille[i+2][j]==grille[i+3][j] && grille[i][j]=='B') {
+					trouve=true;
 				}
 
 			}
