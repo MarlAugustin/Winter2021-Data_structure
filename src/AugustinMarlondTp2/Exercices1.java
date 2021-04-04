@@ -214,7 +214,7 @@ public class Exercices1 {
 		int posDr = vec.length - 1;
 		int posMi = (posGa + posDr)/2;
 		// TODO: Implanter la recherche binaire
-		
+		triSel(vec);
 		while (posGa <= posDr && valeur!=vec[posMi]) {
 			if(valeur < vec[posMi]) {
 				posDr=posMi - 1; 
