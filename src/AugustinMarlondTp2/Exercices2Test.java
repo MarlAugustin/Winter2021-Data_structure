@@ -26,9 +26,11 @@ public class Exercices2Test {
 		unMois=Exercices2.genereMois(1,2021);
 		deuxMois=Exercices2.genereMois(2,2009);
 		troisMois=Exercices2.genereMois(3,2021);
+		int[][] sixMois=Exercices2.genereMois(6,2009);
 		assertEquals(1,Exercices2.trouveJour(unMois, 5, 1));
 		assertEquals(21,Exercices2.trouveJour(deuxMois, 6, -2));
 		assertEquals(11,Exercices2.trouveJour(troisMois, 4, 2));
+		assertEquals(18,Exercices2.trouveJour(sixMois, 6, -2));
 
 	}
 

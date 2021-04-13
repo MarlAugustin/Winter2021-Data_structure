@@ -153,10 +153,11 @@ public class Exercices2 {
 				if (calMois[i][j] == 0) {
 					System.out.print(String.format("%3s", (" ")));
 				}
-				if (calMois[i][j] != 0) {
+				else {
 					System.out.print(String.format("%3d", calMois[i][j]));
-				}
+				}	
 			}
+			
 		}
 		System.out.println("");
 	}
@@ -171,13 +172,10 @@ public class Exercices2 {
 	public static int nbSemaines(int[][] calMois) {
 		// TODO: Calculer le nombre de semaines completes
 		int compte = 0;
-		int nbdeZero = 0;
 
 		for (int i = 0; i < calMois.length; i++) {
 			for (int j = 0; j < calMois[i].length; j++) {
-				if (calMois[i][j] == 0) {
-					nbdeZero++;
-				} else {
+				if (calMois[i][j] != 0) {
 					compte++;
 				}
 			}
@@ -197,15 +195,14 @@ public class Exercices2 {
 	public static int nbFinSemaines(int[][] calMois) {
 		// TODO: Calculer le nombre de fin de semaines completes
 		// TODO: Ecrire des tests unitaires
-		int compte = 0;
+		int compte = 0, tmp=1;
 		for (int i = 0; i < calMois.length; i++) {
-			for (int j = 5; j < calMois[i].length; j++) {
-				if (calMois[i][j] != 0) {
+				if (calMois[i][6] != 0 && calMois[tmp][0] != 0) {
 					compte++;
 				}
 			}
-		}
-		return (compte / 2);
+		
+		return compte;
 	}
 
 	/**
@@ -229,7 +226,6 @@ public class Exercices2 {
 		int nbSemaine = nbFinSemaines(calMois);
 		if (calMois.length == 5) {
 			if (pos == 1) {
-
 				i = 0;
 				jourTrouve = calMois[i][jour];
 			} else if (pos == 2) {
