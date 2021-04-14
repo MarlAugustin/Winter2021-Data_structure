@@ -224,39 +224,22 @@ public class Exercices2 {
 		int jourTrouve = -1;
 		int i = 0;
 		int nbSemaine = nbFinSemaines(calMois);
-		if (calMois.length == 5) {
+		if (pos<calMois.length && pos>0) {
 			if (pos == 1) {
 				i = 0;
-				jourTrouve = calMois[i][jour];
-			} else if (pos == 2) {
-				i = 1;
-				jourTrouve = calMois[i][jour];
-			} else if (pos == -2) {
-				i = nbSemaine - 2;
-				jourTrouve = calMois[i][jour];
-			} else if (pos == -1) {
-				i = nbSemaine - 1;
-				;
 				jourTrouve = calMois[i][jour];
 			} else {
-				i = nbSemaine - 3;
+				i = pos-1;
 				jourTrouve = calMois[i][jour];
-			}
-		} else {
-			if (pos == 1) {
-				i = 0;
-				jourTrouve = calMois[i][jour];
-			}
-			if (pos == 2) {
-				i = 1;
-				jourTrouve = calMois[i][jour];
-			}
-			if (pos == -2) {
-				i = nbSemaine - 2;
-				jourTrouve = calMois[i][jour];
-			}
+			
+		} 
+		}else if (pos<calMois.length && pos<0)   {
+			
 			if (pos == -1) {
-				i = nbSemaine - 1;
+				i = nbSemaine +pos;
+				jourTrouve = calMois[i][jour];
+			}else{
+				i = calMois.length +pos;
 				jourTrouve = calMois[i][jour];
 			}
 		}
