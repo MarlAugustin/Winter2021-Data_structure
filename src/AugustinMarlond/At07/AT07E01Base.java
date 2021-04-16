@@ -159,13 +159,13 @@ public class AT07E01Base {
 	 * @return La longueur moyenne des mots dans la chaine.
 	 */
 	public static float longueurMoyenneMot(String chaine) {
-		int somme = 0;
+		double somme = 0;
 		float moyenne = Float.NaN;
 		String[] tabMots = chaine.split(" ");
 		for (int i = 0; i < tabMots.length; i++) {
 			somme += tabMots[i].length();
 		}
-		moyenne = (somme / tabMots.length);
+		moyenne = ((float)somme / tabMots.length);
 		// TODO: extraire les mots de chaine dans tabMots[]. Utiliser split(" ")
 		// TODO: calculer la somme des longueur des toutes les cases de tabMots[].
 		// TODO: calculer moyenne
