@@ -33,7 +33,7 @@ public class AT07E01Base {
 				message = clavier.nextLine();
 				System.out.print("Entrez la cle/decalage (1-25): ");
 				cle = clavier.nextInt();
-				System.out.println("Le message decode : " + transformeMessage(message, cle));
+				System.out.println("Le message decode : " + transformeMessage(message, -cle));
 				break;
 			case '3':
 				System.out.print("Entrez le message a traiter : ");
