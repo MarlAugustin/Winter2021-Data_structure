@@ -117,9 +117,14 @@ public class AT08E01 {
 		// Trimestre (H ou Hiver + annee) : A####
 		public static String valideTrimestre(String trimestre) {
 			String nouveauTrimestre = "";
-			if(trimestre.matches("[A|Automne|H|Hiver][- ]?(19|20)\\d{2}")) {
-				nouveauTrimestre =trimestre.replaceAll("([A|Automne|H|Hiver])([- ])?(19|20)(\\d{2})", "$1$3$4");
-			}
+			if(trimestre.matches("(A|Automne|H|Hiver)([- ])?(19|20)(\\d{2})")) {
+				if(trimestre.contains("(Automne|A)")) {
+				nouveauTrimestre =trimestre.replaceAll("(A|Automne|H|Hiver)([- ])?(19|20)(\\d{2})", "A$3$4");
+				}
+				else if(trimestre.contains("(Hiver|H)")) {
+					nouveauTrimestre =trimestre.replaceAll("(A|Automne|H|Hiver)([- ])?(19|20)(\\d{2})", "H$3$4");
+				}
+				}
 			// TODO : Verifier le format
 			// TODO : Ajuster le format
 			return nouveauTrimestre;
@@ -128,7 +133,7 @@ public class AT08E01 {
 		// Programme : Chaine de caracteres
 		public static String valideProgramme(String prog) {
 			String nouveauProg = "";
-			if(prog.matches("\\p{Alpha+}*")) {
+			if(prog.matches("[\\p{Alpha+} ]*")) {
 				nouveauProg = prog;
 			}
 			// TODO : Verifier le format
