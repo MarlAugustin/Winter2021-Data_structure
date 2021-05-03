@@ -76,7 +76,7 @@ public class AT09E06Base {
 				Matcher m = Pattern.compile(eqRegExFact).matcher(equation);
 				m.find();
 				nb1 = Integer.parseInt(m.group(1));
-				if (nb1 == 0) {
+				if (nb1 == 0 || nb1>12) {
 					throw regEx;
 				}else {
 				op = '!';
