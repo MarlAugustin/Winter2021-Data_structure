@@ -11,13 +11,15 @@ public static void main(String[] args) {
 	}
 	
 }
-	public static void lireNote(Scanner cl) throws ArithmeticException{
+	public static int lireNote(Scanner cl) throws ArithmeticException{
 		System.out.println("Inscrivez votre note");
 		int note=cl.nextInt();
 		if(note<0 || note>100) {
-			throw new ArithmeticException ("Valeur invalide!!!");
+			throw new ArithmeticException("Valeur invalide!!!");
 		}else {
 		System.out.println(note);
 		}
+		return note;
 		}
+	
 }

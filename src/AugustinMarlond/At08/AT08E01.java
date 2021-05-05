@@ -97,6 +97,7 @@ public class AT08E01 {
 			String nouveauMEQ = "";
 			// TODO : Verifier le format
 			// TODO : Ajuster le format
+			//je bug
 			if(noMEQ.matches("([\\p{javaUpperCase}]{4})([ ])?(\\d{4})([ ])?(\\d{4})")) {
 				nouveauMEQ =noMEQ.replaceAll("([\\p{javaUpperCase}]{4})([ ])?(\\d{4})([ ])?(\\d{4})","$1 $3 $5");
 			}

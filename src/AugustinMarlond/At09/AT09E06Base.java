@@ -8,10 +8,11 @@ public class AT09E06Base {
 	public static void main(String[] args) throws Exception {
 		Scanner clavier = new Scanner(System.in);
 		int nb1, nb2, res;
-		char op;
+		char op = 0;
 		String equation;
 		String eqRegEx = "^(-?[0-9]+)[ ]*([+*/^-])[ ]*(-?[0-9]+)$";
 		String eqRegExFact = "^(-?[0-9]+)[ ]*!$";
+		Exception regEx= new Exception ("Les valeurs acceptables sont comprises entre 1 et 12 inclusivement.");
 
 		do {
 			System.out.print("> ");
@@ -72,15 +73,14 @@ public class AT09E06Base {
 				}
 				}
 			} else if (equation.matches(eqRegExFact)) {
-				Exception regEx= new Exception ("Les valeurs acceptables sont comprises entre 1 et 12 inclusivement.");
 				Matcher m = Pattern.compile(eqRegExFact).matcher(equation);
 				m.find();
 				nb1 = Integer.parseInt(m.group(1));
-				if (nb1 == 0 || nb1>12) {
-					throw regEx;
-				}else {
+				try{
 				op = '!';
 				res = factorielle(nb1);
+				}catch(Exception erreur) {
+					System.out.print(erreur);
 				}
 				} else {
 					op = 'X';
@@ -119,13 +119,23 @@ public class AT09E06Base {
 		return (int) (Math.pow(nb1, nb2));
 	}
 
-	public static int factorielle(int nb1) {
-		int resultatFactorielle = 1;
-		while (nb1 != 1) {
-			resultatFactorielle *= nb1;
-			nb1--;
+	public static int factorielle(int nb1) throws Exception {
+		int resultat = Integer.MIN_VALUE;
+		Exception regEx= new Exception ("Les valeurs acceptables sont comprises entre 1 et 12 inclusivement.");
+
+		if (nb1 == 0 ||nb1>12) {
+		resultat = 1;
+		throw regEx;
 		}
-		return resultatFactorielle;
+		if (nb1 > 0 && nb1 <= 12) {
+		resultat = 1;
+		while (nb1 > 1) {
+		resultat *= nb1;
+		nb1--;
+		}
+		}
+		return resultat;
+		
 
 	}
 
