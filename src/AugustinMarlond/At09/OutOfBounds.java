@@ -2,14 +2,14 @@ package AugustinMarlond.At09;
 
 import java.util.Scanner;
 
-public class notInt extends Exception {
+public class OutOfBounds extends Exception {
 	Scanner clavier = new Scanner(System.in);
 
-	public notInt() {
+	public OutOfBounds() {
 		super();
 	}
 
-	public notInt(String message) {
+	public OutOfBounds(String message) {
 			super(message);
 			}
 			}

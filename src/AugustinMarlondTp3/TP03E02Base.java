@@ -260,7 +260,7 @@ public class TP03E02Base {
 		// TODO : Ajuster le format
 		String nouvelleVille = "";
 		if(ville.matches("\\p{javaLetterOrDigit}{1,}")) {
-			nouvelleVille=ville.replaceAll("(\\p{javaLetter})(\\p{javaLowerCase})*", "$1");
+			nouvelleVille=ville.replaceAll("(\\p{javaLetter})(\\p{javaLowerCase})*", "1$");
 		}
 		
 		return nouvelleVille;
@@ -280,6 +280,9 @@ public class TP03E02Base {
 		String nouveauCP = "";
 		// TODO : Verifier le format
 		// TODO : Ajuster le format
+		if(codePostal.matches("(\\p{javaUpperCase})(\\p{javaLetterOrDigit}{2})([- ])(\\p{javaUpperCase})(\\p{javaLetterOrDigit}{2})")) {
+			nouveauCP=codePostal.replaceAll("(\\p{javaUpperCase})(\\p{javaLetterOrDigit}{2})([- ])(\\p{javaUpperCase})(\\p{javaLetterOrDigit}{2})", "1$2$ 4$5$");
+		}
 		return nouveauCP;
 	}
 
