@@ -5,7 +5,6 @@ import java.util.*;
 public class AT09E03Base {
 	public static void main(String[] args) {
 		Scanner clavier = new Scanner(System.in);
-		int N=0;
 		verifierFormat(clavier);
 		}
 	
@@ -27,8 +26,7 @@ public class AT09E03Base {
 				 Z = Float.parseFloat(tab[i]);	
 			}
 			System.out.println("Nombre ecrit :"+ Z);
-		}		
-	
+		}	
 	}
 }
 

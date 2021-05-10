@@ -2,7 +2,7 @@ package AugustinMarlondTp3;
 import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
-public class TP03E02Base {
+public class TP03E02 {
 	public static final int NOM_IDX = 0;
 	public static final int PRENOM_IDX = 1;
 	public static final int ADRESSE_IDX = 2;
@@ -259,8 +259,8 @@ public class TP03E02Base {
 	public static String validerVille(String ville) {
 		// TODO : Ajuster le format
 		String nouvelleVille = "";
-		if(ville.matches("\\p{javaLetterOrDigit}{1,}")) {
-			nouvelleVille=ville.replaceAll("(\\p{javaLetter})(\\p{javaLowerCase})*", "1$");
+		if(ville.matches("[\\p{javaLetterOrDigit}]{1,}")) {
+			nouvelleVille=ville.replaceAll("([\\p{javaLetter}])([\\p{javaLowerCase}])*", "1$");
 		}
 		
 		return nouvelleVille;
@@ -280,8 +280,8 @@ public class TP03E02Base {
 		String nouveauCP = "";
 		// TODO : Verifier le format
 		// TODO : Ajuster le format
-		if(codePostal.matches("(\\p{javaUpperCase})(\\p{javaLetterOrDigit}{2})([- ])(\\p{javaUpperCase})(\\p{javaLetterOrDigit}{2})")) {
-			nouveauCP=codePostal.replaceAll("(\\p{javaUpperCase})(\\p{javaLetterOrDigit}{2})([- ])(\\p{javaUpperCase})(\\p{javaLetterOrDigit}{2})", "1$2$ 4$5$");
+		if(codePostal.matches("([\\p{javaUpperCase}])([\\p{javaLetterOrDigit}]{2})([- ])([\\p{javaUpperCase}])([\\p{javaLetterOrDigit}]{2})")) {
+			nouveauCP=codePostal.replaceAll("([\\p{javaUpperCase}])([\\p{javaLetterOrDigit}]{2})([- ])([\\p{javaUpperCase}])([\\p{javaLetterOrDigit}]{2})", "1$2$ 4$5$");
 		}
 		return nouveauCP;
 	}
@@ -292,6 +292,10 @@ public class TP03E02Base {
 		String nouveauTelephone = "";
 		// TODO : Verifier le format
 		// TODO : Ajuster le format
+		if(telephone.matches("([(])?(d{3})([)]?)(d{3})([-]?)(d{4})")) {
+			telephone=telephone.replaceAll("([(])?(d{3})([)]?)(d{3})([-]?)(d{4})", "(2$)4$-6$");
+
+		}
 		return nouveauTelephone;
 	}
 	
@@ -308,6 +312,9 @@ public class TP03E02Base {
 	public static String validerCourriel(String courriel) {
 		String nouveauCourriel = "";
 		// TODO : Verifier le format
+		if(courriel.matches("([\\p{javaLetterOrDigit}]*)(.[\\p{javaLetterOrDigit}]*)?(@[\\p{javaLowerCase}]*)([.com|.ca]")) {
+			nouveauCourriel=courriel;
+		}
 		return nouveauCourriel;
 	}
 

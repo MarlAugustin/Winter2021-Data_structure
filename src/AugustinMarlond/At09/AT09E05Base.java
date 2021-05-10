@@ -25,8 +25,6 @@ public class AT09E05Base {
 			System.out.println("Ce n'est pas un Int!!!");
 		}if(note<0 || note>100) {
 			throw new OutOfBounds("Valeur invalide!!!");
-		}else {
-			System.out.println(note);
 		}
 
 		return note;
