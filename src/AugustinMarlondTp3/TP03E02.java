@@ -214,7 +214,7 @@ public class TP03E02 {
 	public static String validerNom(String nom) {
 		String nouveauNom = "";
 		// TODO : Verifier le format
-		if(nom.matches("([\\p{javaUpperCase}])([\\p{javaLowerCase}]*)")) {
+		if(nom.matches("([\\p{javaUpperCase}])([\\p{javaLowerCase}]*)(([-][\\p{javaUpperCase}])([\\p{javaLowerCase}]*))?")) {
 			nouveauNom=nom;
 		}
 		return nouveauNom;
@@ -231,7 +231,7 @@ public class TP03E02 {
 	public static String validerPrenom(String prenom) {
 		String nouveauPrenom = "";
 		// TODO : Verifier le format
-		if(prenom.matches("([\\p{javaUpperCase}])([\\p{javaLowerCase}]*)")) {
+		if(prenom.matches("([\\p{javaUpperCase}])([\\p{javaLowerCase}]*)+(([-][\\p{javaUpperCase}])([\\p{javaLowerCase}]*))?")) {
 			nouveauPrenom=prenom;
 		}
 		return nouveauPrenom;
@@ -248,7 +248,7 @@ public class TP03E02 {
 	public static String validerAdresse(String adresse) {
 		String nouvelleAdresse = "";
 		// TODO : Verifier le format
-		if(adresse.matches("[0-9] [\\p{javaLetterOrDigit}]{2,}")) {
+		if(adresse.matches("[0-9]{1,} .{2,}")) {
 			nouvelleAdresse=adresse;
 		}
 		return nouvelleAdresse;
@@ -258,10 +258,8 @@ public class TP03E02 {
 	// TODO: JUNIT - 5 tests unitaires pertinents
 	public static String validerVille(String ville) {
 		// TODO : Ajuster le format
-		String nouvelleVille = "";
-		if(ville.matches("[\\p{javaLetterOrDigit}]{1,}")) {
-			nouvelleVille=ville.replaceAll("([\\p{javaLetter}])([\\p{javaLowerCase}])*", "1$");
-		}
+		String nouvelleVille = "";	
+		nouvelleVille=ville.toUpperCase().charAt(0)+ville.substring(1);
 		
 		return nouvelleVille;
 	}
@@ -280,8 +278,8 @@ public class TP03E02 {
 		String nouveauCP = "";
 		// TODO : Verifier le format
 		// TODO : Ajuster le format
-		if(codePostal.matches("([\\p{javaUpperCase}])([\\p{javaLetterOrDigit}]{2})([- ])([\\p{javaUpperCase}])([\\p{javaLetterOrDigit}]{2})")) {
-			nouveauCP=codePostal.replaceAll("([\\p{javaUpperCase}])([\\p{javaLetterOrDigit}]{2})([- ])([\\p{javaUpperCase}])([\\p{javaLetterOrDigit}]{2})", "1$2$ 4$5$");
+		if(codePostal.matches("([\\p{javaUpperCase}])([\\p{javaLetterOrDigit}]{2})([- ])?([\\p{javaLetterOrDigit}]{3})")) {
+			nouveauCP=codePostal.replaceAll("([\\p{javaUpperCase}])([\\p{javaLetterOrDigit}]{2})([- ])?([\\p{javaLetterOrDigit}]{3})", "$1$2 $4");
 		}
 		return nouveauCP;
 	}
@@ -292,10 +290,9 @@ public class TP03E02 {
 		String nouveauTelephone = "";
 		// TODO : Verifier le format
 		// TODO : Ajuster le format
-		if(telephone.matches("([(])?(d{3})([)]?)(d{3})([-]?)(d{4})")) {
-			telephone=telephone.replaceAll("([(])?(d{3})([)]?)(d{3})([-]?)(d{4})", "(2$)4$-6$");
-
-		}
+		if(telephone.matches("\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})")) {
+			nouveauTelephone=telephone.replaceAll("\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})", "($1)$2-$3");
+			}
 		return nouveauTelephone;
 	}
 	
@@ -312,7 +309,7 @@ public class TP03E02 {
 	public static String validerCourriel(String courriel) {
 		String nouveauCourriel = "";
 		// TODO : Verifier le format
-		if(courriel.matches("([\\p{javaLetterOrDigit}]*)(.[\\p{javaLetterOrDigit}]*)?(@[\\p{javaLowerCase}]*)([.com|.ca]")) {
+		if(courriel.matches("([\\p{javaLetterOrDigit}]*)(.[\\p{javaLetterOrDigit}]*)?(@[\\p{javaLowerCase}]*)(.[\\p{javaLetterOrDigit}]*)?(.com|.ca)")) {
 			nouveauCourriel=courriel;
 		}
 		return nouveauCourriel;
@@ -334,6 +331,56 @@ public class TP03E02 {
 		//			- Sinon, copier donnee dans la case appropriee de la ligne
 		// TODO: Faire 7 fois la validation, soit une validation pour 
 		//			chacun des sept elements de la ligne
+		if(uneLigne.length==7) {
+			donnee=validerNom(uneLigne[0]);
+			if(!donnee.equals("")) {
+			}else {
+				System.out.println("Format incorrect");
+				valide=false;
+			}
+			donnee=validerPrenom(uneLigne[1]);
+			if(!donnee.equals("")) {
+			}else {
+				System.out.println("Format incorrect");
+				valide=false;
+			}
+			donnee=validerAdresse(uneLigne[2]);
+			if(!donnee.equals("")) {
+			}else {
+				System.out.println("Format incorrect");
+				valide=false;
+			}
+			donnee=validerVille(uneLigne[3]);
+			if(!donnee.equals("")) {
+				uneLigne[3]=donnee;
+			}else {
+				System.out.println("Format incorrect");
+				valide=false;
+			}
+			donnee=validerCodePostal(uneLigne[4]);
+			if(!donnee.equals("")) {
+				uneLigne[4]=donnee;
+			}else {
+				System.out.println("Format incorrect");
+				valide=false;
+			}
+			donnee=validerTelephone(uneLigne[5]);
+			if(!donnee.equals("")) {
+				uneLigne[5]=donnee;
+			}else {
+				System.out.println("Format incorrect");
+				valide=false;
+			}
+			donnee=validerCourriel(uneLigne[6]);
+			if(!donnee.equals("")) {
+			}else {
+				System.out.println("Format incorrect");
+				valide=false;
+			}
+		}else {
+			System.out.println("Nombre d'elements invalide ("+uneLigne.length+"!=7)");
+			valide=false;
+		}
 		return valide;
 	}
 	
@@ -352,6 +399,32 @@ public class TP03E02 {
 		// TODO: Sinon, afficher un message a la console
 		// TODO: Attraper les exceptions FileNotFoundException et IOException
 		// TODO: Fermer le fichier dans le bloc finally
+		String nomFichier = "src/AugustinMarlondTp3/bottin.txt";
+		try {
+			tamponBottin = new BufferedReader(new FileReader(nomFichier));
+		while((ligneBottin=tamponBottin.readLine())!=null ) {
+			ligneBottin=ligneBottin.trim();
+			if(!ligneBottin.isEmpty() && nbEntrees<bottin.length) {
+				tmpStrTab=ligneBottin.split(",") ;
+				if(validerLigne(tmpStrTab)==true) {
+					bottin[nbEntrees] = tmpStrTab;
+					nbEntrees++;
+				}
+			}
+		}
+		} catch (FileNotFoundException exc) {
+		System.out.println("Le fichier " + nomFichier + " est introuvable.");
+		} catch (IOException exc) {
+			System.out.println("Probleme de lecture du fichier: " + nomFichier);
+		} finally{
+		try{
+		if (tamponBottin!= null) {
+			tamponBottin.close();
+		}
+		} catch (IOException exc) {
+		System.out.println("Probleme de fermeture du fichier: " + nomFichier);
+		}
+		}
 		return nbEntrees;
 	}
 	
@@ -368,5 +441,27 @@ public class TP03E02 {
 		// TODO: Ecrire la ligne dans le fichier suivi d'un saut de ligne
 		// TODO: Attraper l'exception IOException
 		// TODO: Fermer le fichier dans le bloc finally
+		String nomFichier = "src/AugustinMarlondTp3/bottin.txt";
+		try{
+			tamponBottin= new BufferedWriter(new FileWriter(nomFichier));
+			// Concatenerles informations dans une chaine modifiable de type StringBuilder
+			for(int i=0; i<bottin.length;i++) {
+			ligneBottin.append(bottin[i][0]).append(", ").append(bottin[i][1]);
+			tamponBottin.write(ligneBottin.toString()); // Ecrirela chaine dans le fichier
+			tamponBottin.newLine(); // Ajouter un saut de ligne
+			ligneBottin.setLength(0); // Vider la chaine avant de passer a l’etudiantsuivant
+			}
+			} catch (IOException exc) {
+			System.out.println("Erreur d'ecriture");
+			} finally{
+			try{
+			if (tamponBottin!= null) {
+				tamponBottin.close(); // Fermer le fichier
+			}
+			} catch (IOException exc) {
+			System.out.println("Probleme de fermeture du fichier: " + nomFichier);
+			}
+			}
+		
 	}
 }
