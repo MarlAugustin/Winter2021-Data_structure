@@ -335,46 +335,46 @@ public class TP03E02 {
 			donnee=validerNom(uneLigne[0]);
 			if(!donnee.equals("")) {
 			}else {
-				System.out.println("Format incorrect");
+				System.out.println("Nom invalide"+ uneLigne[0]);
 				valide=false;
 			}
-			donnee=validerPrenom(uneLigne[1]);
-			if(!donnee.equals("")) {
+			String donnee1=validerPrenom(uneLigne[1]);
+			if(!donnee1.equals("")) {
 			}else {
-				System.out.println("Format incorrect");
+				System.out.println("prenom invalide "+ uneLigne[1]);
 				valide=false;
 			}
-			donnee=validerAdresse(uneLigne[2]);
-			if(!donnee.equals("")) {
+			String donnee2=validerAdresse(uneLigne[2]);
+			if(!donnee2.equals("")) {
 			}else {
-				System.out.println("Format incorrect");
+				System.out.println("adresse invalide : "+ uneLigne[2]);
 				valide=false;
 			}
-			donnee=validerVille(uneLigne[3]);
-			if(!donnee.equals("")) {
-				uneLigne[3]=donnee;
+			String donnee3=validerVille(uneLigne[3]);
+			if(!donnee3.equals("")) {
+				uneLigne[3]=donnee3;
 			}else {
-				System.out.println("Format incorrect");
+				System.out.println("Ville invalide : "+uneLigne[3]);
 				valide=false;
 			}
-			donnee=validerCodePostal(uneLigne[4]);
-			if(!donnee.equals("")) {
-				uneLigne[4]=donnee;
+			String donnee4=validerCodePostal(uneLigne[4]);
+			if(!donnee4.equals("")) {
+				uneLigne[4]=donnee4;
 			}else {
-				System.out.println("Format incorrect");
+				System.out.println("Code postal invalide : "+uneLigne[4]);
 				valide=false;
 			}
-			donnee=validerTelephone(uneLigne[5]);
-			if(!donnee.equals("")) {
-				uneLigne[5]=donnee;
+			String donnee5=validerTelephone(uneLigne[5]);
+			if(!donnee5.equals("")) {
+				uneLigne[5]=donnee5;
 			}else {
-				System.out.println("Format incorrect");
+				System.out.println("telephone invalide : "+uneLigne[5]);
 				valide=false;
 			}
-			donnee=validerCourriel(uneLigne[6]);
-			if(!donnee.equals("")) {
+			String donnee6=validerCourriel(uneLigne[6]);
+			if(!donnee6.equals("")) {
 			}else {
-				System.out.println("Format incorrect");
+				System.out.println("Courriel invalide : "+uneLigne[6]);
 				valide=false;
 			}
 		}else {
@@ -405,10 +405,12 @@ public class TP03E02 {
 		while((ligneBottin=tamponBottin.readLine())!=null ) {
 			ligneBottin=ligneBottin.trim();
 			if(!ligneBottin.isEmpty() && nbEntrees<bottin.length) {
-				tmpStrTab=ligneBottin.split(",") ;
+				tmpStrTab=ligneBottin.split(":") ;
 				if(validerLigne(tmpStrTab)==true) {
 					bottin[nbEntrees] = tmpStrTab;
 					nbEntrees++;
+				}else{
+					System.out.println("Ligne refusee :"+ligneBottin);
 				}
 			}
 		}
@@ -446,7 +448,7 @@ public class TP03E02 {
 			tamponBottin= new BufferedWriter(new FileWriter(nomFichier));
 			// Concatenerles informations dans une chaine modifiable de type StringBuilder
 			for(int i=0; i<bottin.length;i++) {
-			ligneBottin.append(bottin[i][0]).append(", ").append(bottin[i][1]);
+			ligneBottin.append(bottin[i][0]).append(": ").append(bottin[i][1]);
 			tamponBottin.write(ligneBottin.toString()); // Ecrirela chaine dans le fichier
 			tamponBottin.newLine(); // Ajouter un saut de ligne
 			ligneBottin.setLength(0); // Vider la chaine avant de passer a l’etudiantsuivant
