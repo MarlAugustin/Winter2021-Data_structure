@@ -256,9 +256,16 @@ public class TP03E02 {
 
 	// TODO: JAVADOC
 	// TODO: JUNIT - 5 tests unitaires pertinents
+	/**
+	 * Cette fonction reçoit ville retourne la chaîne nouvelleVille, 
+	 * on transforme le premier caractère en majuscule et le reste on les transforme en miniscule.
+	 * @author Marlond Augustin
+	 * @param ville  c'est le nom de ville qu'il faut formater
+	 * @return nouvelleVille c'est le nom de ville formater
+	 */
 	public static String validerVille(String ville) {
 		// TODO : Ajuster le format
-		String nouvelleVille = "";	
+		String nouvelleVille = "laval";	
 		nouvelleVille=ville.toUpperCase().charAt(0)+ville.substring(1);
 		
 		return nouvelleVille;
@@ -286,6 +293,13 @@ public class TP03E02 {
 
 	// TODO: JAVADOC
 	// TODO: JUNIT - 5 tests unitaires pertinents
+	/**
+	 * La fonction accepte les numéro de téléphones de différents formats. Si elle  correspond au format demander
+	 * nouveauTelephone formate telephone. Sinon elle reste vide.
+	 * 
+	 * @param telephone telephone a valider
+	 * @return nouveauTelephone standardise ou chaine vide s'il n'est pas valide. 
+	 */
 	public static String validerTelephone(String telephone) {
 		String nouveauTelephone = "";
 		// TODO : Verifier le format
@@ -309,7 +323,7 @@ public class TP03E02 {
 	public static String validerCourriel(String courriel) {
 		String nouveauCourriel = "";
 		// TODO : Verifier le format
-		if(courriel.matches("([\\p{javaLetterOrDigit}]*)(.[\\p{javaLetterOrDigit}]*)?(@[\\p{javaLowerCase}]*)(.[\\p{javaLetterOrDigit}]*)?(.com|.ca)")) {
+		if(courriel.matches("([\\p{javaLetterOrDigit}]+)(.[\\p{javaLetterOrDigit}]+)?(@[\\p{javaLowerCase}]+)(.[\\p{javaLowerCase}]+)?(.com|.ca)")) {
 			nouveauCourriel=courriel;
 		}
 		return nouveauCourriel;
@@ -317,6 +331,14 @@ public class TP03E02 {
 
 	// TODO: JAVADOC
 	// TODO: JUNIT - 5 tests unitaires pertinents
+	/**
+	 * On verifie si ligne possède 7 éléments, sinon on affiche une erreur et valide devient faux.
+	 * On verifie les informations individullement en utilisant les différentes méthodes valider...
+	 * et si le contenu de donne n'est pas vide valide devient vrai sinon c'est faux
+	 * @author Marlond Augustin
+	 * @param uneLigne elle contient les informations qui devront être vérifier
+	 * @return valide pour foir si la ligne est valide ou non
+	 */
 	public static boolean validerLigne(String[] uneLigne) {
 		boolean valide = true;
 		String donnee = "";
@@ -331,6 +353,7 @@ public class TP03E02 {
 		//			- Sinon, copier donnee dans la case appropriee de la ligne
 		// TODO: Faire 7 fois la validation, soit une validation pour 
 		//			chacun des sept elements de la ligne
+		
 		if(uneLigne.length==7) {
 			donnee=validerNom(uneLigne[0]);
 			if(!donnee.equals("")) {
@@ -385,6 +408,14 @@ public class TP03E02 {
 	}
 	
 	// TODO: JAVADOC
+	/**Elle ouvre le fichier « src/<votre nom>/TP03/bottin.txt » et copie son contenu
+	 * dans le tableau bottin, reçu en paramètre
+	 * Si une ligne est invalide, un message apparaît à la console et
+	 * elle n'est pas ajoutée au tableau bottin
+	 * @author Marlond
+	 * @param bottin elle copie le contenue de src/AugustinMarlondTp3/bottin.txt
+	 * @return nbEntrees on concatène selon le nombre de ligne valide dans le nom de fichier
+	 */
 	public static int lireBottin(String[][] bottin) {
 		BufferedReader tamponBottin = null;
 		String ligneBottin;
@@ -399,6 +430,7 @@ public class TP03E02 {
 		// TODO: Sinon, afficher un message a la console
 		// TODO: Attraper les exceptions FileNotFoundException et IOException
 		// TODO: Fermer le fichier dans le bloc finally
+		
 		String nomFichier = "src/AugustinMarlondTp3/bottin.txt";
 		try {
 			tamponBottin = new BufferedReader(new FileReader(nomFichier));
@@ -431,6 +463,14 @@ public class TP03E02 {
 	}
 	
 	// TODO: JAVADOC
+	/**Elle écrase le fichier « src/<votre nom>/TP03/bottin.txt » pour y écrire le bottin reçu en paramètre.
+	 * chaque données (colonnes) doivent être séparées par  « : ». Si il y a une erreur on affiche le contenu 
+	 * des exceptions
+	 * @author Marlond
+	 * @param bottin  on l'utilise pour recevoir les informations liés aux élèves
+	 * @param nbEntrees on utilise pour set la longueur du bottin
+	 */
+
 	public static void ecrireBottin(String[][] bottin, int nbEntrees) {
 		BufferedWriter tamponBottin = null;
 		StringBuilder ligneBottin = new StringBuilder();
@@ -441,14 +481,17 @@ public class TP03E02 {
 		// TODO: Construire la ligne dans le StringBuilder en separant
 		//			chaque element par ":"
 		// TODO: Ecrire la ligne dans le fichier suivi d'un saut de ligne
-		// TODO: Attraper l'exception IOException
+		// TODO: Attraper l'exception IOException1
 		// TODO: Fermer le fichier dans le bloc finally
+	
 		String nomFichier = "src/AugustinMarlondTp3/bottin.txt";
 		try{
 			tamponBottin= new BufferedWriter(new FileWriter(nomFichier));
 			// Concatenerles informations dans une chaine modifiable de type StringBuilder
-			for(int i=0; i<bottin.length;i++) {
-			ligneBottin.append(bottin[i][0]).append(": ").append(bottin[i][1]);
+			for(int i=0; i<nbEntrees;i++) {
+			for(int j=0; j<BOTTIN_COLS;j++) {
+			ligneBottin.append(bottin[i][j]).append(":");
+			}
 			tamponBottin.write(ligneBottin.toString()); // Ecrirela chaine dans le fichier
 			tamponBottin.newLine(); // Ajouter un saut de ligne
 			ligneBottin.setLength(0); // Vider la chaine avant de passer a l’etudiantsuivant

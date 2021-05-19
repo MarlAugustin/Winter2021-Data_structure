@@ -1,25 +1,4 @@
-Leduc: Nicolas
-Laloge: Bidou
-Godbout: Vincent
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
-null: null
+Leduc:Nicolas:125 des Prairies:Laval:H7M 2S8:(450)967-0221:moi@ecole.ca:
+Desbiens:Luc:242 Giroux:Laval:H7N 4J1:(450)229-4229:ldb@gmail.com:
+Godbout:Vincent:1567 chemin Codos:Tremblant:N4S 0C0:(819)437-2963:vgodbout@fastmail.com:
+Laloge:Will:320 rue Bons:Laval:A0A 0A0:(514)555-5555:laloge@hotmail.com:
